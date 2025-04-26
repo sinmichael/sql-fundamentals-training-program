@@ -200,3 +200,85 @@ FROM
   products
 GROUP BY
   category;
+
+-- Filtering with HAVING
+SELECT
+  customer_id,
+  COUNT(*) AS total_orders
+FROM
+  orders
+GROUP BY
+  customer_id
+HAVING
+  COUNT(*) > 3;
+
+-- Subquery in SELECT
+SELECT
+  name,
+  (
+    SELECT
+      AVG(price)
+    FROM
+      products
+  ) AS avg_price
+FROM
+  products;
+
+-- Subquery in WHERE
+SELECT
+  *
+FROM
+  products
+WHERE
+  price > (
+    SELECT
+      AVG(price)
+    FROM
+      products
+  );
+
+-- Subquery in FROM
+SELECT
+  category,
+  avg_price
+FROM
+  (
+    SELECT
+      category,
+      AVG(price) AS avg_price
+    FROM
+      products
+    GROUP BY
+      category
+  ) AS category_avg;
+
+-- CTE Example
+WITH high_value_orders AS (
+  SELECT
+    *
+  FROM
+    orders
+  WHERE
+    total_amount > 500
+)
+SELECT
+  *
+FROM
+  high_value_orders;
+
+-- CTE with JOIN and Aggregation
+WITH customer_orders AS (
+  SELECT
+    customer_id,
+    COUNT(*) AS total_orders
+  FROM
+    orders
+  GROUP BY
+    customer_id
+)
+SELECT
+  c.first_name,
+  co.total_orders
+FROM
+  customer_orders co
+  JOIN customers c ON c.id = co.customer_id;

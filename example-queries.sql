@@ -155,3 +155,48 @@ COMMIT;
 
 -- ROLLBACK
 ROLLBACK;
+
+-- Count total customers
+SELECT
+  COUNT(*)
+FROM
+  customers;
+
+-- Get the average product price
+SELECT
+  AVG(price)
+FROM
+  products;
+
+-- Total value of all orders
+SELECT
+  SUM(total_amount)
+FROM
+  orders;
+
+-- GROUP BY
+SELECT
+  category,
+  COUNT(*) AS total_products
+FROM
+  products
+GROUP BY
+  category;
+
+-- Total orders per customer
+SELECT
+  customer_id,
+  COUNT(*) AS total_orders
+FROM
+  orders
+GROUP BY
+  customer_id;
+
+-- Average stock by category
+SELECT
+  category,
+  AVG(stock_quantity) AS avg_stock
+FROM
+  products
+GROUP BY
+  category;

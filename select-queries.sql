@@ -1,0 +1,98 @@
+-- SELECT statment
+SELECT
+  first_name,
+  last_name
+FROM
+  customers;
+
+-- Using LIMIT to restrict the number of results
+SELECT
+  name,
+  category
+FROM
+  products
+limit
+  10;
+
+-- Filtering with WHERE
+SELECT
+  name
+FROM
+  products
+WHERE
+  price < 100;
+
+-- Filtering with WHERE
+SELECT
+  name
+FROM
+  products
+WHERE
+  price BETWEEN 50
+  AND 500
+  AND stock_quantity > 0;
+
+-- Sorting with ORDER BY
+SELECT
+  first_name,
+  last_name
+FROM
+  customers
+ORDER BY
+  last_name ASC;
+
+-- Remove duplicate results with DISTINCT
+SELECT DISTINCT category FROM products;
+
+-- Aliases for Readability
+SELECT first_name AS "First", last_name AS "Last" FROM customers;
+
+SELECT
+  o.id,
+  c.first_name,
+  o.total_amount
+FROM
+  orders o
+  INNER JOIN customers c ON o.customer_id = c.id;
+
+SELECT
+  c.first_name,
+  o.id
+FROM
+  customers c
+  LEFT JOIN orders o ON c.id = o.customer_id;
+
+SELECT
+  c.first_name,
+  o.id
+FROM
+  customers c
+  RIGHT JOIN orders o ON c.id = o.customer_id;
+
+SELECT
+  c.first_name,
+  o.id
+FROM
+  customers c full
+  OUTER JOIN orders o ON c.id = o.customer_id;
+
+SELECT
+  o.id,
+  p.name as product,
+  oi.quantity
+FROM
+  order_items oi
+  JOIN orders o ON o.id = oi.order_id
+  JOIN products p ON p.id = oi.product_id;
+
+SELECT
+  c.first_name,
+  p.name,
+  oi.quantity
+FROM
+  customers c
+  JOIN orders o ON o.customer_id = c.id
+  JOIN order_items oi ON oi.order_id = o.id
+  JOIN products p ON p.id = oi.product_id
+WHERE
+  p.category = 'Electronics';

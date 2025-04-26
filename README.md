@@ -7,8 +7,10 @@ Welcome to the companion repository for the **SQL Fundamentals Training Program*
 | File Name                  | Description |
 |---------------------------|-------------|
 | `create-tables.sql`       | SQL scripts to create the main e-commerce tables: `customers`, `products`, `orders`, `order_items`. |
-| `ecommerce-sample-data.sql` | Inserts ~100 sample records into each table with realistic data using [Faker](https://faker.readthedocs.io/). |
+| `ecommerce-sample-data.sql` | Inserts 100 sample records into each table with realistic data using [Faker](https://faker.readthedocs.io/). |
 | `example-queries.sql`      | A collection of example queries covering filtering, JOINs, INSERT, UPDATE, DELETE, aggregation, and more. |
+| `ecommerce-sample-data-500.sql` | Inserts 500 sample records into each table with realistic data using [Faker](https://faker.readthedocs.io/). |
+| `ecommerce-sample-data-500-v2.sql` | Inserts another 500 sample records into each table with realistic data using [Faker](https://faker.readthedocs.io/). |
 
 ## 🧱 Database Structure
 

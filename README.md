@@ -41,7 +41,7 @@ createdb ecommerce_training
 You can explore the database using:
 
 ```sql
-\i select-queries.sql
+\i example-queries.sql
 ```
 
 This includes practical queries:

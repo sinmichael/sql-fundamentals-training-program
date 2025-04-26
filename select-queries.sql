@@ -42,11 +42,19 @@ ORDER BY
   last_name ASC;
 
 -- Remove duplicate results with DISTINCT
-SELECT DISTINCT category FROM products;
+SELECT
+  DISTINCT category
+FROM
+  products;
 
 -- Aliases for Readability
-SELECT first_name AS "First", last_name AS "Last" FROM customers;
+SELECT
+  first_name AS "First",
+  last_name AS "Last"
+FROM
+  customers;
 
+-- INNER JOIN
 SELECT
   o.id,
   c.first_name,
@@ -55,6 +63,7 @@ FROM
   orders o
   INNER JOIN customers c ON o.customer_id = c.id;
 
+-- LEFT JOIN
 SELECT
   c.first_name,
   o.id
@@ -62,6 +71,7 @@ FROM
   customers c
   LEFT JOIN orders o ON c.id = o.customer_id;
 
+-- RIGHT JOIN
 SELECT
   c.first_name,
   o.id
@@ -69,6 +79,7 @@ FROM
   customers c
   RIGHT JOIN orders o ON c.id = o.customer_id;
 
+-- OUTER JOIN
 SELECT
   c.first_name,
   o.id
@@ -76,6 +87,7 @@ FROM
   customers c full
   OUTER JOIN orders o ON c.id = o.customer_id;
 
+-- JOIN multiple tables
 SELECT
   o.id,
   p.name as product,
@@ -85,6 +97,7 @@ FROM
   JOIN orders o ON o.id = oi.order_id
   JOIN products p ON p.id = oi.product_id;
 
+-- Filtering joined data
 SELECT
   c.first_name,
   p.name,
@@ -96,3 +109,49 @@ FROM
   JOIN products p ON p.id = oi.product_id
 WHERE
   p.category = 'Electronics';
+
+-- INSERT INTO
+INSERT INTO
+  customer (first_name, last_name, email, phone, address)
+VALUES
+  (
+    'Maria',
+    'Lopez',
+    'maria@example.com',
+    '1234567890',
+    '456 Pine St'
+  );
+
+-- UPDATE
+UPDATE
+  product
+SET
+  price = price * 0.9
+WHERE
+  category = 'Home Appliances';
+
+-- DELETE
+DELETE FROM
+  product
+WHERE
+  name = 'Discontinued Item';
+
+-- Transactions and Rollback
+BEGIN;
+
+UPDATE
+  products
+SET
+  price = price * 0.9
+WHERE
+  category = 'Electronics';
+
+DELETE FROM
+  customers
+WHERE
+  email = 'test@example.com';
+
+COMMIT;
+
+-- ROLLBACK
+ROLLBACK;

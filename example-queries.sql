@@ -282,3 +282,15 @@ SELECT
 FROM
   customer_orders co
   JOIN customers c ON c.id = co.customer_id;
+
+-- EXPLAIN
+EXPLAIN
+SELECT
+  *
+FROM
+  orders
+WHERE
+  customer_id = 5;
+
+-- Create index
+CREATE INDEX idx_orders_customer_id ON orders(customer_id);

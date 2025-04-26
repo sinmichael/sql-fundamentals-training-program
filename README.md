@@ -8,7 +8,7 @@ Welcome to the companion repository for the **SQL Fundamentals Training Program*
 |---------------------------|-------------|
 | `create-tables.sql`       | SQL scripts to create the main e-commerce tables: `customers`, `products`, `orders`, `order_items`. |
 | `ecommerce-sample-data.sql` | Inserts ~100 sample records into each table with realistic data using [Faker](https://faker.readthedocs.io/). |
-| `select-queries.sql`      | A collection of `SELECT` queries covering filtering, JOINs, aggregation, and more. |
+| `example-queries.sql`      | A collection of example queries covering filtering, JOINs, INSERT, UPDATE, DELETE, aggregation, and more. |
 
 ## 🧱 Database Structure
 
@@ -46,6 +46,7 @@ You can explore the database using:
 
 This includes practical queries:
 - Filtering products and customers
+- Insertion, updating and deletion of records
 - Aggregating sales data
 - Using JOINs to connect related tables
 - Common real-world reporting queries
